@@ -381,6 +381,14 @@ public class SolitaireGame : MonoBehaviour
 
     public void StackToTop(GameObject previousSelected, GameObject selected)
     {
+        //new stuff
+        Card previousSelectedCard = previousSelected.GetComponent<CardPresenter>().card;
+        if (previousSelectedCard.suit != bottoms[previousSelected.GetComponent<CardPresenter>().row].Last<Card>().suit && previousSelectedCard.value != bottoms[previousSelected.GetComponent<CardPresenter>().row].Last<Card>().value)
+        {
+            print("not stackable, destination is not at the bottom of the stack");
+            return;
+        }
+
         print("adding " + previousSelected + "to " + selected);
         int row = topPos.IndexOf(selected);
         int last = 0;
