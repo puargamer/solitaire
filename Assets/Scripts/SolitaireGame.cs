@@ -231,7 +231,7 @@ public class SolitaireGame : MonoBehaviour
             print("not stackable, destination is part of waste");
             return false;
         }
-        if (selectedCard.suit != bottoms[selected.GetComponent<CardPresenter>().row].Last<Card>().suit && selectedCard.value != bottoms[selected.GetComponent<CardPresenter>().row].Last<Card>().value)
+        if (selectedCard.suit != bottoms[selected.GetComponent<CardPresenter>().row].Last<Card>().suit || selectedCard.value != bottoms[selected.GetComponent<CardPresenter>().row].Last<Card>().value)     //new thingy
         {
             print("not stackable, destination is not at the bottom of the stack");
             return false;
