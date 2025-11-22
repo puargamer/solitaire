@@ -383,10 +383,15 @@ public class SolitaireGame : MonoBehaviour
     {
         //new stuff
         Card previousSelectedCard = previousSelected.GetComponent<CardPresenter>().card;
-        if (previousSelectedCard.suit != bottoms[previousSelected.GetComponent<CardPresenter>().row].Last<Card>().suit && previousSelectedCard.value != bottoms[previousSelected.GetComponent<CardPresenter>().row].Last<Card>().value)
+
+        //if previousSelected is from the bottom row, check if card is valid
+        if (previousSelected.GetComponent<CardPresenter>().row != 100)
         {
-            print("not stackable, destination is not at the bottom of the stack");
-            return;
+            if (previousSelectedCard.suit != bottoms[previousSelected.GetComponent<CardPresenter>().row].Last<Card>().suit && previousSelectedCard.value != bottoms[previousSelected.GetComponent<CardPresenter>().row].Last<Card>().value)
+            {
+                print("not stackable, destination is not at the bottom of the stack");
+                return;
+            }
         }
 
         print("adding " + previousSelected + "to " + selected);
